@@ -46,7 +46,7 @@ const Home = () => {
       const res = await axios.get(
         `https://newsapi.org/v2/everything?q=${category}&domains=wsj.com&page=${page}&apiKey=${process.env.REACT_APP_NEWS_KEY}`
       );
-      console.log("news api res:", res?.data?.articles);
+      // console.log("news api res:", res?.data?.articles);
       setLoading(false);
       if (res?.data?.status === "ok") {
         setArticles([...articles, ...res?.data?.articles]);
@@ -61,7 +61,6 @@ const Home = () => {
       setLoading(false);
     }
   };
-
   
 
   const getTopHeadlines = async () => {
@@ -93,7 +92,6 @@ const Home = () => {
   const display = () => {
     return (
       <>
-      {!articles ? <div className="w-full flex justify-center p-20 m-20">No data to be show</div> : ''}
         {articles
           ? articles.map((article, id) => {
               return (
@@ -132,7 +130,7 @@ const Home = () => {
                 </div>
               );
             })
-          : null}
+          : <div className="w-full flex justify-center p-20 m-20">No data to be show</div>}
       </>
     );
   };
@@ -150,7 +148,7 @@ const Home = () => {
       {loading ? (
         <div className="w-full flex justify-center">..loading news feed</div>
       ) : null}
-      <div className="flex justify-end my-4 pr-4">
+      {/* <div className="flex justify-end my-4 pr-4">
         <div>
           <span className="font-pop text-sm pr-5">Switch Category</span>
           <select
@@ -162,7 +160,7 @@ const Home = () => {
             <option value="apple">apple</option>
           </select>
         </div>
-      </div>
+      </div> */}
       <Layout
         title={category}
         onMore={more}
