@@ -93,6 +93,7 @@ const Home = () => {
   const display = () => {
     return (
       <>
+      {!articles ? <div className="w-full flex justify-center p-20 m-20">No data to be show</div> : ''}
         {articles
           ? articles.map((article, id) => {
               return (
